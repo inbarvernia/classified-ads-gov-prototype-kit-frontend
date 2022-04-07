@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page template –
+  {{ serviceName }}
+  – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/url/of/next/page" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          idPrefix: "which-city",
+          name: "which-city",
+          fieldset: {
+            legend: {
+            text: "Which city are you searching in?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "Cardiff",
+            text: "Cardiff",
+            checked: checked("which-city", "Cardiff")
+          },
+          {
+            value: "Belfast",
+            text: "Belfast",
+            checked: checked("which-city", "Belfast")
+          },
+          {
+            value: "Edinburgh",
+            text: "Edinburgh",
+            checked: checked("which-city", "Edinburgh")
+          },
+          {
+            value: "London",
+            text: "London",
+            checked: checked("which-city", "London")
+          }
+        ]
+      })  }}
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
