@@ -15,40 +15,40 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/which-advert-type" method="post">
+      <form class="form" action="/url/of/next/page" method="post">
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          idPrefix: "which-city",
-          name: "which-city",
+          idPrefix: "which-advert-type",
+          name: "which-advert-type",
           fieldset: {
             legend: {
-            text: "Which city are you searching in?",
+            text: "What type of ad are you looking for?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         items: [
           {
-            value: "Cardiff",
-            text: "Cardiff",
-            checked: checked("which-city", "Cardiff")
+            value: "For sale",
+            text: "For sale",
+            checked: checked("which-advert-type", "For sale")
           },
           {
-            value: "Belfast",
-            text: "Belfast",
-            checked: checked("which-city", "Belfast")
+            value: "Rental",
+            text: "Rental",
+            checked: checked("which-advert-type", "Rental")
           },
           {
-            value: "Edinburgh",
-            text: "Edinburgh",
-            checked: checked("which-city", "Edinburgh")
+            value: "Dating",
+            text: "Dating",
+            checked: checked("which-advert-type", "Dating")
           },
           {
-            value: "London",
-            text: "London",
-            checked: checked("which-city", "London")
+            value: "All ads",
+            text: "All ads",
+            checked: checked("which-advert-type", "All ads")
           }
         ]
       })  }}
