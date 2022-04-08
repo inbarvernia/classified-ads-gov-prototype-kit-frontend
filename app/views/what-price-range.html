@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page template –
+  {{ serviceName }}
+  – GOV.UK Prototype Kit
+{% endblock %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">What prices are you looking for?</h1>
+
+      <form action="/form-handler" method="post" novalidate="novalidate">
+
+        {{ govukInput({
+            label: {
+            text: "Minimum:",
+            classes: "govuk-input--width-5"
+          },
+          id: "min",
+          name: "min",
+          inputmode: "numeric",
+          pattern: "[0-9]*",
+          hint: {
+            text: "You can leave this field empty"
+          }
+        }) }}
+
+        {{ govukInput({
+            label: {
+            text: "Maximum:",
+            classes: "govuk-input--width-5"
+          },
+          id: "max",
+          name: "max",
+          inputmode: "numeric",
+          pattern: "[0-9]*",
+          hint: {
+            text: "You can leave this field empty"
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
