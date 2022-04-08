@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page template –
+  {{ serviceName }}
+  – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/url" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          idPrefix: "which-rental-filters",
+          name: "which-rental-filters",
+          fieldset: {
+            legend: {
+            text: "What would you like to filter rental ads by?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "created",
+            text: "Date created",
+            checked: checked("which-rental-filters", "created")
+          },
+          {
+            value: "lastUpdated",
+            text: "Date last updated",
+            checked: checked("which-rental-filters", "lastUpdated")
+          },
+          {
+            value: "numberOfBedrooms",
+            text: "Number of bedrooms",
+            checked: checked("which-rental-filters", "numberOfBedrooms")
+          },
+          {
+            value: "numberOfBathrooms",
+            text: "Number of bathrooms",
+            checked: checked("which-rental-filters", "numberOfBathrooms")
+          },
+          {
+            value: "dateAvailable",
+            text: "Date available",
+            checked: checked("which-rental-filters", "dateAvailable")
+          },
+          {
+            value: "price",
+            text: "Price",
+            checked: checked("which-rental-filters", "price")
+          }
+        ]
+      })  }}
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

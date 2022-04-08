@@ -15,7 +15,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/url/of/next/page" method="post">
+      <form class="form" action="/which-ads-answer" method="post">
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -31,14 +31,14 @@
         },
         items: [
           {
-            value: "All ads in this category",
+            value: "All",
             text: "All ads in this category",
-            checked: checked("which-ads", "All ads in this category")
+            checked: checked("which-ads", "All")
           },
           {
-            value: "Filter ads by desired criteria",
+            value: "Filter",
             text: "Filter ads by desired criteria",
-            checked: checked("which-ads", "Filter ads by desired criteria")
+            checked: checked("which-ads", "Filter")
           }
         ]
       })  }}
