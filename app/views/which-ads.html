@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page template –
+  {{ serviceName }}
+  – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/url/of/next/page" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          idPrefix: "which-ads",
+          name: "which-ads",
+          fieldset: {
+            legend: {
+            text: "Which ads would you like to view?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "All ads in this category",
+            text: "All ads in this category",
+            checked: checked("which-ads", "All ads in this category")
+          },
+          {
+            value: "Filter ads by desired criteria",
+            text: "Filter ads by desired criteria",
+            checked: checked("which-ads", "Filter ads by desired criteria")
+          }
+        ]
+      })  }}
+        {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+        {{ govukDetails({
+  summaryText: "How does filtering work?",
+  text: "Filtering lets you pick out criteria for what you're looking for, and we will only show you results that fit those criteria. For example, you might only want to see ads below a certain price, or posted after a certain date."
+}) }}
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
