@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page template –
+  {{ serviceName }}
+  – GOV.UK Prototype Kit
+{% endblock %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">What order would you like the results displayed in?</h1>
+
+      <form action="/form-handler" method="post" novalidate="novalidate">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          idPrefix: "which-advert-type",
+          name: "which-advert-type",
+          fieldset: {
+            legend: {
+            text: "What would you like results to be ordered by?",
+            isPageHeading: false,
+            classes: "govuk-label--m"
+          }
+        },
+        items: [
+          {
+            value: "created",
+            text: "Date created",
+            checked: checked("which-advert-type", "created")
+          },
+          {
+            value: "price",
+            text: "Price",
+            checked: checked("which-advert-type", "price")
+          }
+        ]
+      })  }}
+
+        {{ govukRadios({
+          idPrefix: "which-advert-type",
+          name: "which-advert-type",
+          fieldset: {
+            legend: {
+            text: "Would you like the results in ascending or descending order?",
+            isPageHeading: false,
+            classes: "govuk-label--m"
+          }
+        },
+        items: [
+          {
+            value: "ascending",
+            text: "Ascending",
+            checked: checked("which-advert-type", "ascending")
+          },
+          {
+            value: "descending",
+            text: "Descending",
+            checked: checked("which-advert-type", "descending")
+          }
+        ]
+      })  }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
