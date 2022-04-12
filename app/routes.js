@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const request = require('then-request');
 
 // Add your routes here - above the module.exports line
 
@@ -35,6 +36,23 @@ router.post('/which-rental-filters-answer', function (req, res) {
     res.redirect('/not-available')
   }
 
+})
+
+// Respond to GET /results
+// (Would need to first post parameters based on answers and then GET, but just doing an initial test)
+router.get('/results', function (req, res) {
+  console.log("Sending request")
+  // Request some random text from an API
+  request('GET', 'http://localhost:9000/adverts')
+    .getBody('utf8') // Parse to text
+    .then(text => JSON.parse(text)) // Parse to JSON
+    .then(advertJson => {
+      // Render our 'random' template with the data we got
+      console.log("Information received")
+      console.log(advertJson)
+      res.render("results", { advert: advertJson })
+    })
+  console.log("Finished request cycle")
 })
 
 module.exports = router

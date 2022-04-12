@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Content page template –
+  {{ serviceName }}
+  – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Results
+      </h1>
+
+      <h2 class="govuk-heading-xl">
+        {{ advert[0].title }}
+      </h2>
+
+      <p>{{ advert[0].body }}</p>
+
+    </div>
+  </div>
+
+{% endblock %}
