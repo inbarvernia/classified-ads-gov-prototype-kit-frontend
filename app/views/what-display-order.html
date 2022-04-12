@@ -27,8 +27,8 @@
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          idPrefix: "which-advert-type",
-          name: "which-advert-type",
+          idPrefix: "which-sort-property",
+          name: "which-sort-property",
           fieldset: {
             legend: {
             text: "What would you like results to be ordered by?",
@@ -40,19 +40,19 @@
           {
             value: "created",
             text: "Date created",
-            checked: checked("which-advert-type", "created")
+            checked: checked("which-sort-property", "created")
           },
           {
             value: "price",
             text: "Price",
-            checked: checked("which-advert-type", "price")
+            checked: checked("which-sort-property", "price")
           }
         ]
       })  }}
 
         {{ govukRadios({
-          idPrefix: "which-advert-type",
-          name: "which-advert-type",
+          idPrefix: "which-sort-direction",
+          name: "which-sort-direction",
           fieldset: {
             legend: {
             text: "Would you like the results in ascending or descending order?",
@@ -64,12 +64,12 @@
           {
             value: "ascending",
             text: "Ascending",
-            checked: checked("which-advert-type", "ascending")
+            checked: checked("which-sort-direction", "ascending")
           },
           {
             value: "descending",
             text: "Descending",
-            checked: checked("which-advert-type", "descending")
+            checked: checked("which-sort-direction", "descending")
           }
         ]
       })  }}
