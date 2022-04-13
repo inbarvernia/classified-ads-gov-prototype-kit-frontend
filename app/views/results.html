@@ -19,11 +19,17 @@
         Results
       </h1>
 
-      <h2 class="govuk-label--m">
-        {{ advert[0].title }}
-      </h2>
-
-      <p>{{ advert[0].body }}</p>
+      <ul>
+        {% for advert in adverts %}
+          <li>
+            <h2 class="govuk-label--m">{{ advert.title }}</h2>
+            <p>Description:
+              {{ advert.body }}</p>
+          </li>
+        {% else %}
+          <h2 class="govuk-label--m">No results found</h2>
+        {% endfor %}
+      </ul>
 
     </div>
   </div>

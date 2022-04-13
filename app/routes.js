@@ -50,7 +50,7 @@ router.get('/results', function (req, res) {
       // Render our 'random' template with the data we got
       console.log("Information received")
       console.log(advertJson)
-      res.render("results", { advert: advertJson })
+      res.render("results", { adverts: advertJson })
     })
   console.log("Finished request cycle")
 })
