@@ -23,8 +23,19 @@
         {% for advert in adverts %}
           <li>
             <h2 class="govuk-label--m">{{ advert.title }}</h2>
-            <p>Description:
+            <p>
+              <strong>Description:</strong>
               {{ advert.body }}</p>
+            {% if advert.price %}
+              <p>
+                <strong>Price:</strong>
+                {{ advert.price}}</p>
+            {% endif %}
+            {% if advert.numberOfBedrooms %}
+              <p>
+                <strong>Number of Bedrooms:</strong>
+                {{ advert.numberOfBedrooms}}</p>
+            {% endif %}
           </li>
         {% else %}
           <h2 class="govuk-label--m">No results found</h2>
