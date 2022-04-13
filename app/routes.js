@@ -4,7 +4,6 @@ const request = require('then-request');
 
 // Add your routes here - above the module.exports line
 
-// Run this code when a form is submitted to 'which-ads'
 router.post('/which-ads-answer', function (req, res) {
 
   let whichAds = req.session.data['which-ads']
@@ -14,15 +13,16 @@ router.post('/which-ads-answer', function (req, res) {
   if (whichAds === "Filter" && adType === 'rental') {
     // Send user to next page
     res.redirect('/which-rental-filters')
-  } else {
+  } else if (whichAds === "All") {
+    res.redirect('/what-display-order')
+  }
+  else {
     // Send user to ineligible page
     res.redirect('/not-available')
   }
 
 })
 
-
-// Run this code when a form is submitted to 'which-rental-filters'
 router.post('/which-rental-filters-answer', function (req, res) {
 
   let whichRentalFilter = req.session.data['which-rental-filters']
@@ -38,21 +38,21 @@ router.post('/which-rental-filters-answer', function (req, res) {
 
 })
 
-// Respond to GET /results
-// (Would need to first post parameters based on answers and then GET, but just doing an initial test)
-router.get('/results', function (req, res) {
-  console.log("Sending request")
+router.post('/results', function (req, res) {
+  let adType = req.session.data['which-advert-type']
+  let requestUrl = 'http://localhost:9000/adverts';
+  if (adType !== "all") {
+    requestUrl += '?advertType=' + adType
+  }
   // Request some random text from an API
-  request('GET', 'http://localhost:9000/adverts')
+  request('GET', requestUrl)
     .getBody('utf8') // Parse to text
     .then(text => JSON.parse(text)) // Parse to JSON
     .then(advertJson => {
       // Render our 'random' template with the data we got
-      console.log("Information received")
       console.log(advertJson)
       res.render("results", { adverts: advertJson })
     })
-  console.log("Finished request cycle")
 })
 
 module.exports = router
