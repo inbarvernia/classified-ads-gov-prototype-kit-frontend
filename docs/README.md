@@ -5,4 +5,8 @@ Frontend for Makers Academy [Scala-Play-MongoDB classified ads backend](https://
 ## Implemented features:
 - Partial branching and data collection for users' answers
 - Results page displays ads from database filtered by advert type selected on `which-advert-type` page
-- Due to backend limitations, additional filtering is not yet practically implemented, and sorting currently only works if the selection on `which-advert-type` is something other than `All`
+- Results page displays ads based on the sort order selected in `what-display-order`
+
+## Future features:
+- A `check-answers` should be displayed before moving on to display results
+- Due to current backend limitations, filtering for features other than advert type is not yet practically implemented, but should be fairly straightforward to add once backend functionality has been added

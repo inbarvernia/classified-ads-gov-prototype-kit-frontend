@@ -45,9 +45,11 @@ router.post('/results', function (req, res) {
   let requestUrl = 'http://localhost:9000/adverts';
   if (sortDirection !== null && sortProperty !== null) {
     requestUrl += `?sort=${sortProperty}&sortDirection=${sortDirection}`
-  }
-  if (adType !== "all") {
-    requestUrl += '&advertType=' + adType
+    if (adType !== "all") {
+      requestUrl += '&advertType=' + adType
+    }
+  } else if (adType !== "all") {
+    requestUrl += '?advertType=' + adType
   }
   console.log(requestUrl)
   // Request some random text from an API
