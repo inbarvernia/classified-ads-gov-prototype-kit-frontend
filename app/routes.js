@@ -39,11 +39,17 @@ router.post('/which-rental-filters-answer', function (req, res) {
 })
 
 router.post('/results', function (req, res) {
-  let adType = req.session.data['which-advert-type']
+  let adType = req.session.data['which-advert-type'];
+  let sortProperty = req.session.data['which-sort-property'];
+  let sortDirection = req.session.data['which-sort-direction']
   let requestUrl = 'http://localhost:9000/adverts';
-  if (adType !== "all") {
-    requestUrl += '?advertType=' + adType
+  if (sortDirection !== null && sortProperty !== null) {
+    requestUrl += `?sort=${sortProperty}&sortDirection=${sortDirection}`
   }
+  if (adType !== "all") {
+    requestUrl += '&advertType=' + adType
+  }
+  console.log(requestUrl)
   // Request some random text from an API
   request('GET', requestUrl)
     .getBody('utf8') // Parse to text
